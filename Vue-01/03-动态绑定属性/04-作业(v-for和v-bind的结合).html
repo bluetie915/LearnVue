@@ -16,7 +16,8 @@
     <!-- 点击列表中的哪一项，那么该项的文字变成红色 -->
     <div id="app">
         <ul>
-            <li v-on:click="btnClick(item)" :class="red" v-for="(item, index) in movies" :key="index">{{index}}-{{item}}</li>
+            <li v-on:click="btnClick(index)" :class="{red:i===index}" v-for="(item, index) in movies" :key="index">
+                {{index}}-{{item}}</li>
         </ul>
     </div>
 
@@ -26,12 +27,12 @@
             el: '#app',
             data: {
                 movies: ['海王', '火影忍者', '进击的巨人', '星际穿越'],
-                red: ''
+                red: 'red',
+                i: 0
             },
             methods: {
                 btnClick: function (e) {
-                    console.log(e);
-                    this.movies[1].red = 'red';
+                    this.i = e;
                 }
             },
         })

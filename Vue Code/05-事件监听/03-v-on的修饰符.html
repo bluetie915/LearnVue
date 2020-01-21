@@ -9,9 +9,22 @@
 <body>
 
     <div id="app">
+        <!-- 1.修饰符.stop的使用(可以终止冒泡) -->
         <div @click="divClick">
-            <button @click="btnClick">按钮</button>
+            aaa
+            <button @click.stop="btnClick">按钮</button>
         </div>
+
+        <!-- 2.修饰符.prevent的使用 -->
+        <form action="baidu">
+            <input type="submit" value="提交" @click.prevent="submitClick">
+        </form>
+
+        <!-- 3.监听某个键盘的键帽的点击 -->
+        <input type="text" @keyup.enter="keyUp">
+
+        <!-- 4.修饰符.once的使用 -->
+        <button @click.once="btn2Click">按钮2</button>
     </div>
 
     <script src="../js/vue.js"></script>
@@ -22,10 +35,21 @@
                 message: '你好'
             },
             methods: {
-                btnClick() { 
-                    
+                btnClick() {
+                    console.log("btnClick");
                 },
-                divClick() { }
+                divClick() {
+                    console.log("divClick");
+                },
+                submitClick() {
+                    console.log("submitClick");
+                },
+                keyUp() {
+                    console.log("keyUp");
+                },
+                btn2Click() {
+                    console.log("btn2Click");
+                }
             },
         });
     </script>

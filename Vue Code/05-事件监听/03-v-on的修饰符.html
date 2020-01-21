@@ -9,8 +9,9 @@
 <body>
 
     <div id="app">
-        <h2>{{url}}</h2>
-        <div v-html="url"></div>
+        <div @click="divClick">
+            <button @click="btnClick">按钮</button>
+        </div>
     </div>
 
     <script src="../js/vue.js"></script>
@@ -18,9 +19,14 @@
         const app = new Vue({
             el: '#app',
             data: {
-                message: '你好',
-                url: '<a href="http://www.baibu.com">百度一下</a>'
-            }
+                message: '你好'
+            },
+            methods: {
+                btnClick() { 
+                    
+                },
+                divClick() { }
+            },
         });
     </script>
 </body>

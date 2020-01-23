@@ -33,11 +33,28 @@ const app = new Vue({
     },
     computed: {
         totalPrice() {
-            let totalPrice = 0
-            for (let i = 0; i < this.books.length; i++) {
-                totalPrice += this.books[i].price * this.books[i].amount
-            }
-            return totalPrice
+            // 1.普通for循环
+            // let totalPrice = 0
+            // for (let i = 0; i < this.books.length; i++) {
+            //     totalPrice += this.books[i].price * this.books[i].amount
+            // }
+            // return totalPrice
+
+            // 2.for(let i in this.books)
+            // let totalPrice = 0
+            // for (let i in this.books){
+            //     totalPrice += this.books[i].price * this.books[i].amount
+            // }
+            // return totalPrice
+
+            // 3.for(let i of this.books)
+            // let totalPrice = 0
+            // for(let item of this.books){
+            //     totalPrice += item.price * item.amount
+            // }
+            // return totalPrice
+
+            // reduce
         }
     },
     methods: {
@@ -60,3 +77,6 @@ const app = new Vue({
         }
     }
 });
+
+// 编程范式：命令式编程/声明式编程
+// 编程范式：面向对象编程(第一公民：对象)/函数式编程(第一公民：函数)

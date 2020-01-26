@@ -49,12 +49,16 @@ const app = new Vue({
 
             // 3.for(let i of this.books)
             // let totalPrice = 0
-            // for(let item of this.books){
+            // for (let item of this.books) {
             //     totalPrice += item.price * item.amount
             // }
             // return totalPrice
 
-            // reduce
+            // 4.reduce
+            return this.books.reduce(function (preValue, book) {
+                return preValue + book.price * book.amount
+            }, 0)
+
         }
     },
     methods: {
@@ -78,34 +82,3 @@ const app = new Vue({
     }
 });
 
-// 编程范式：命令式编程/声明式编程
-// 编程范式：面向对象编程(第一公民：对象)/函数式编程(第一公民：函数)
-// filter/map/reduce
-// filter中的回调函数有一个要求：必须返回一个boolean值
-// true：当返回true时，函数内部会自动将这次架设的n加入到新的数组中
-// false：当返回false时，函数内部会过滤掉这次的n
-const nums = [10, 20, 111, 222, 234, 30]
-
-nums.filter()
-
-// // 1.需求：取出所有小于100的数字
-// let newNums = []
-// for (let n of nums) {
-//     if (n < 100) {
-//         newNums.push(n)
-//     }
-// }
-
-// // 2.需求：将所有小于00的数字进行转化：全部*2
-// let new2Nums = []
-// for (let n of newNums) {
-//     if (n < 100) {
-//         new2Nums.push(n * 2)
-//     }
-// }
-
-// // 3.需求：将所有newNums数字相加得到最终的结果
-// let total = 0
-// for (let n of new2Nums) {
-//     total += n
-// }

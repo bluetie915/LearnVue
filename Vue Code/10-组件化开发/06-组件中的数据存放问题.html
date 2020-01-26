@@ -13,19 +13,10 @@
         <cpn></cpn>
     </div>
 
-    <!-- 1.通过script标签来定义template，但是类型必须是type="text/x-template" -->
-    <script type="text/x-template" id="cpn">
+    <!-- 组件不可以访问vue实例中的变量 -->
+    <template id="cpn">
         <div>
-            <h2>我是通过script标签定义的</h2>
-            <p>我是内容</p>
-            <p>我是内容</p>
-        </div>
-    </script>
-
-    <!-- 2.通过template标签即可，同样只要使用id绑定 -->
-    <template id="cpn2">
-        <div>
-            <h2>我是通过template标签定义的</h2>
+            <h2>{{title}}</h2>
             <p>我是内容</p>
             <p>我是内容</p>
         </div>
@@ -36,7 +27,12 @@
     <script>
         // 1.注册一个全局组件
         Vue.component('cpn', {
-            template: '#cpn'
+            template: '#cpn',
+            data() {
+                return {
+                    title: '我是定义在组件中的'
+                }
+            }
         })
 
 

@@ -1,2 +1,3 @@
 # LearnVue
-学习Vue
+
+学习 Vue

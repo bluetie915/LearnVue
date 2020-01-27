@@ -2,30 +2,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Document</title>
 </head>
 
 <body>
 
-    <div id="app">
-        <!-- 错误的做法：这里不可以使用mustache语法 -->
-        <!-- <img src="{{imgURL}}" alt=""> -->
-        <img v-bind:src="imgURL" alt="">
-        <a :href="aHref">百度一下</a>
-    </div>
+  <div id="app">
+    <!-- 错误的做法：这里不可以使用mustache语法 -->
+    <!-- <img src="{{imgURL}}" alt=""> -->
+    <img v-bind:src="imgURL" alt="">
+    <a :href="aHref">百度一下</a>
+  </div>
 
-    <script src="../js/vue.js"></script>
-    <script>
-        const app = new Vue({
-            el: '#app',
-            data: {
-                message: '你好',
-                imgURL: 'https://img13.360buyimg.com/mobilecms/s280x280_jfs/t1/88990/27/10628/194757/5e1edbcdE742f1831/14c8cd589a907c59.jpg.webp',
-                aHref: 'http://www.baidu.com'
-            }
-        });
-    </script>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好',
+        imgURL: 'https://img13.360buyimg.com/mobilecms/s280x280_jfs/t1/88990/27/10628/194757/5e1edbcdE742f1831/14c8cd589a907c59.jpg.webp',
+        aHref: 'http://www.baidu.com'
+      }
+    });
+  </script>
 </body>
 
 </html>

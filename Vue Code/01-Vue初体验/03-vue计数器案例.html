@@ -2,43 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Document</title>
 </head>
 
 <body>
 
-    <div id="app">
-        <h2>当前计数：{{counter}}</h2>
-        <!-- <button v-on:click='counter++'>+</button> -->
-        <!-- <button v-on:click='counter--'>-</button> -->
-        <button v-on:click="add">+</button>
-        <button @click="sub">-</button>
-    </div>
+  <div id="app">
+    <h2>当前计数：{{counter}}</h2>
+    <!-- <button v-on:click='counter++'>+</button> -->
+    <!-- <button v-on:click='counter--'>-</button> -->
+    <button v-on:click="add">+</button>
+    <button @click="sub">-</button>
+  </div>
 
-    <script src="../js/vue.js"></script>
-    <script>
-        const app = new Vue({
-            el: '#app',
-            data: {
-                counter: 0
-            },
-            methods: {
-                add: function () {
-                    console.log("add被执行");
-                    this.counter++;
-                },
-                sub: function () {
-                    console.log("sub被执行");
-                    this.counter--;
-                }
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        counter: 0
+      },
+      methods: {
+        add: function () {
+          console.log("add被执行");
+          this.counter++;
+        },
+        sub: function () {
+          console.log("sub被执行");
+          this.counter--;
+        }
 
-            }
-        });
+      }
+    });
         // 原生js的操作
         // 1.拿button元素
         // 1.添加监听事件
-    </script>
+  </script>
 </body>
 
 </html>

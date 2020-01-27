@@ -2,42 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-        .red {
-            color: red;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .red {
+      color: red;
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- 点击列表中的哪一项，那么该项的文字变成红色 -->
-    <div id="app">
-        <ul>
-            <li v-on:click="btnClick(index)" :class="{red:currentIndex === index}" v-for="(item, index) in movies"
-                :key="index">
-                {{index}}-{{item}}</li>
-        </ul>
-    </div>
+  <!-- 点击列表中的哪一项，那么该项的文字变成红色 -->
+  <div id="app">
+    <ul>
+      <li v-on:click="btnClick(index)" :class="{red:currentIndex === index}" v-for="(item, index) in movies"
+        :key="index">
+        {{index}}-{{item}}</li>
+    </ul>
+  </div>
 
-    <script src="../js/vue.js"></script>
-    <script>
-        const app = new Vue({
-            el: '#app',
-            data: {
-                movies: ['海王', '火影忍者', '进击的巨人', '星际穿越'],
-                red: 'red',
-                currentIndex: 0
-            },
-            methods: {
-                btnClick: function (e) {
-                    this.i = e;
-                }
-            },
-        });
-    </script>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        movies: ['海王', '火影忍者', '进击的巨人', '星际穿越'],
+        red: 'red',
+        currentIndex: 0
+      },
+      methods: {
+        btnClick: function (e) {
+          this.i = e;
+        }
+      },
+    });
+  </script>
 </body>
 
 </html>

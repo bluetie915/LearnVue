@@ -2,56 +2,56 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Document</title>
 </head>
 
 <body>
 
-    <div id="app">
-        <cpn2></cpn2>
-        <!-- <cpn1></cpn1>此刻没有在root里面注册，所有还不能使用 -->
-        <!-- vue实例压根不知道有cpn1的存在，cpn2解析完成之后，才交给vue实例的 -->
-        <!-- 类似java中的方法封装，调用者不知道方法的具体实现 -->
-    </div>
+  <div id="app">
+    <cpn2></cpn2>
+    <!-- <cpn1></cpn1>此刻没有在root里面注册，所有还不能使用 -->
+    <!-- vue实例压根不知道有cpn1的存在，cpn2解析完成之后，才交给vue实例的 -->
+    <!-- 类似java中的方法封装，调用者不知道方法的具体实现 -->
+  </div>
 
-    <script src="../js/vue.js"></script>
-    <script>
-        // 1.创建第一个组件构造器(子组件)
-        const cpnC1 = Vue.extend({
-            template: `
+  <script src="../js/vue.js"></script>
+  <script>
+    // 1.创建第一个组件构造器(子组件)
+    const cpnC1 = Vue.extend({
+      template: `
             <div>
                 <h2>我是标题1</h2>
                 <p>我是内容111</p>
                 <p>我是内容111</p>
             </div>`
-        })
+    })
 
-        // 2.创建第二个构造器(父组件)
-        const cpnC2 = Vue.extend({
-            template: `
+    // 2.创建第二个构造器(父组件)
+    const cpnC2 = Vue.extend({
+      template: `
             <div>
                 <h2>我是标题2</h2>
                 <p>我是内容222</p>
                 <p>我是内容222</p>
                 <cpn1></cpn1>
             </div>`,
-            components: {
-                cpn1: cpnC1
-            }
-        })
+      components: {
+        cpn1: cpnC1
+      }
+    })
 
-        // root组件(可以看作是一个组件))
-        const app = new Vue({
-            el: '#app',
-            data: {
-                message: '你好'
-            },
-            components: {
-                cpn2: cpnC2
-            }
-        });
-    </script>
+    // root组件(可以看作是一个组件))
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好'
+      },
+      components: {
+        cpn2: cpnC2
+      }
+    });
+  </script>
 </body>
 
 </html>

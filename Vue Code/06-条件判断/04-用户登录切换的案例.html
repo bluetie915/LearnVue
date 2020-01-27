@@ -9,15 +9,13 @@
 <body>
 
   <div id="app">
-    <!-- 会出现两种方式的输入框是同用的 -->
-    <!-- 要避免这种情况就要给每个输入框加一个key -->
     <span v-if="isUser">
       <label for="username">用户帐号</label>
-      <input type="text" id="username" placeholder="用户帐号" key="username">
+      <input type="text" id="username" placeholder="用户帐号">
     </span>
     <span v-else>
       <label for="email">用户邮箱</label>
-      <input type="text" id="email" placeholder="用户邮箱" :key="email">
+      <input type="text" id="email" placeholder="用户邮箱">
     </span>
     <button @click="isUser = !isUser">切换类型</button>
   </div>

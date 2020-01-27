@@ -2,36 +2,36 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Document</title>
 </head>
 
 <body>
 
-    <div id="app">
-        <!-- 此时带单引号的代表是字符串 -->
-        <h2 :class="['active','active2']">{{message}}</h2>
-        <!-- 此时不带单引号的代表是对象 -->
-        <h2 :class="[active,active2]">{{message}}</h2>
-        <h2 :class="getClasses()">{{message}}</h2>
-    </div>
+  <div id="app">
+    <!-- 此时带单引号的代表是字符串 -->
+    <h2 :class="['active','active2']">{{message}}</h2>
+    <!-- 此时不带单引号的代表是对象 -->
+    <h2 :class="[active,active2]">{{message}}</h2>
+    <h2 :class="getClasses()">{{message}}</h2>
+  </div>
 
-    <script src="../js/vue.js"></script>
-    <script>
-        const app = new Vue({
-            el: '#app',
-            data: {
-                message: '你好',
-                active: 'test',
-                active2: 'test2'
-            },
-            methods: {
-                getClasses: function () {
-                    return [this.active, this.active2];
-                }
-            },
-        });
-    </script>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好',
+        active: 'test',
+        active2: 'test2'
+      },
+      methods: {
+        getClasses: function () {
+          return [this.active, this.active2];
+        }
+      },
+    });
+  </script>
 </body>
 
 </html>

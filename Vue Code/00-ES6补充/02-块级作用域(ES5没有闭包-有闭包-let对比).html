@@ -2,26 +2,26 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Document</title>
 </head>
 
 <body>
-    <button>按钮1</button>
-    <button>按钮2</button>
-    <button>按钮3</button>
-    <button>按钮4</button>
-    <button>按钮5</button>
-    <script>
-        // 在ES5中使用闭包
-        var btns = document.getElementsByTagName('button');
-        for (var i = 0; i < btns.length; i++) {
-            (function (i) {
-                btns[i].addEventListener('click', function () {
-                    console.log("按钮" + i + "被点击了")
-                })
-            })(i)
-        }
+  <button>按钮1</button>
+  <button>按钮2</button>
+  <button>按钮3</button>
+  <button>按钮4</button>
+  <button>按钮5</button>
+  <script>
+    // 在ES5中使用闭包
+    var btns = document.getElementsByTagName('button');
+    for (var i = 0; i < btns.length; i++) {
+      (function (i) {
+        btns[i].addEventListener('click', function () {
+          console.log("按钮" + i + "被点击了")
+        })
+      })(i)
+    }
 
         //使用ES6
         // const btns = document.getElementsByTagName('button')
@@ -30,7 +30,7 @@
         //         console.log("按钮" + i + "被点击了");
         //     })
         // }
-    </script>
+  </script>
 </body>
 
 </html>

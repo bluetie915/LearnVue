@@ -2,29 +2,29 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Document</title>
 </head>
 
 <body>
 
-    <div id="app">
-        {{movies}}
-        <ul>
-            <li v-for="item in movies">{{item}}</li>
-        </ul>
-    </div>
+  <div id="app">
+    {{movies}}
+    <ul>
+      <li v-for="item in movies">{{item}}</li>
+    </ul>
+  </div>
 
-    <script src="../js/vue.js"></script>
-    <script>
-        const app = new Vue({
-            el: '#app',
-            data: {
-                message: '你好',
-                movies: ['海王', '星际穿越', '大话西游', '盗梦空间']
-            }
-        });
-    </script>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好',
+        movies: ['海王', '星际穿越', '大话西游', '盗梦空间']
+      }
+    });
+  </script>
 </body>
 
 </html>

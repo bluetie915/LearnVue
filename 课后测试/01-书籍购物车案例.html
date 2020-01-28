@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    table {
+      border: 1px solid #000;
+    }
+
+    th,
+    td {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <table cellpadding="10px" cellspacing="2px">
+      <thead>
+        <th></th>
+        <th>书籍名称</th>
+        <th>出版日期</th>
+        <th>书籍价格</th>
+        <th>购买数量</th>
+        <th>操作</th>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in books" :key="item.id">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.createDate}}</td>
+          <td>{{item.price | showPrice}}</td>
+          <td>
+            <button @click="decrement(index)" :disabled="item.amount === 1">-</button>
+            {{item.amount}}
+            <button @click="increment(index)">+</button>
+          </td>
+          <td>
+            <button @click="remove(index)">移除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>总价格为：{{totalPrice4 | showPrice}}</h2>
+  </div>
+  <script src="../Vue Code/js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        books: [
+          {
+            id: 1,
+            name: '《操作系统》',
+            createDate: '2006-9',
+            price: 85.00,
+            amount: 1
+          },
+          {
+            id: 2,
+            name: '《UNIX编程艺术》',
+            createDate: '2006-2',
+            price: 59.00,
+            amount: 1
+          },
+          {
+            id: 3,
+            name: '《编程珠玑》',
+            createDate: '2008-10',
+            price: 39.00,
+            amount: 1
+          },
+          {
+            id: 4,
+            name: '《代码大全》',
+            createDate: '2004-3',
+            price: 128.00,
+            amount: 1
+          }
+        ]
+      },
+      filters: {
+        showPrice(price) {
+          return "￥" + price.toFixed(2)
+        }
+      },
+      computed: {
+        totalPrice() {
+          let totalPrice = 0
+          for (let book of this.books) {
+            totalPrice += book.amount * book.price
+          }
+          return totalPrice
+        },
+        totalPrice2() {
+          let totalPrice = 0
+          for (let i in this.books) {
+            totalPrice += this.books[i].amount * this.books[i].price
+          }
+          return totalPrice
+        },
+        totalPrice3() {
+          let totalPrice = 0
+          for (let i = 0; i < this.books.length; i++) {
+            totalPrice += this.books[i].amount * this.books[i].price
+          }
+          return totalPrice
+        },
+        totalPrice4() {
+          return this.books.reduce(function (preValue, book) {
+            return preValue += book.amount * book.price
+          }, 0)
+        }
+      },
+      methods: {
+        increment(index) {
+          this.books[index].amount++
+        },
+        decrement(index) {
+          this.books[index].amount--
+        },
+        remove(index) {
+          this.books.splice(index, 1)
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

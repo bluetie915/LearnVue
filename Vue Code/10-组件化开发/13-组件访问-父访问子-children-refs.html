@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn ref="test"></cpn>
+    <button @click="btnClick">按钮</button>
+  </div>
+
+  <template id="cpn">
+    <div>
+      我是子组件
+    </div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '你好'
+      },
+      methods: {
+        btnClick() {
+          // 1.$children
+          // console.log(this.$children);
+          // for (let child of this.$children) {
+          //   console.log(child.name)
+          //   child.showMessage()
+          // }
+          // console.log(this.$children[2].name)
+
+          // 2.$refs => 对象类型，默认是一个空的对象 ref='test'
+          // 可以获得指定的子组件，一般都是用这种
+          console.log(this.$refs.test.name);
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          data() {
+            return {
+              name: '我是子组件的name'
+            }
+          },
+          methods: {
+            showMessage() {
+              console.log('showMessage');
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

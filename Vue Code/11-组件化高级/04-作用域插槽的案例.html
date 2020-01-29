@@ -8,17 +8,29 @@
 
 <body>
 
+  <!-- 作用域插槽：父组件修改子组件的展示方法，内容还是子组件的内容 -->
   <div id="app">
     <cpn></cpn>
-    <cpn></cpn>
-    <cpn></cpn>
+    <!-- 目的是获取子组件中的pLanguages -->
+    <cpn>
+      <template slot-scope="slot">
+        <span v-for="item in slot.data">{{item}} - </span>
+      </template>
+    </cpn>
+
+    <cpn>
+      <template slot-scope="slot">
+        <!-- 要去掉最后一个 *，可以用join方法 -->
+        <span v-for="item in slot.data.join(' * ')">{{item}}</span>
+      </template>
+    </cpn>
   </div>
 
   <template id="cpn">
     <div>
-      <slot>
+      <slot :data="pLanguages">
         <ul>
-          <li v-for="item in pLanguage">{{item}}</li>
+          <li v-for="item in pLanguages">{{item}}</li>
         </ul>
       </slot>
     </div>
@@ -35,7 +47,7 @@
           template: '#cpn',
           data() {
             return {
-              pLanguage: ['JavaScript', 'C++', 'Java', 'C#', 'Python', 'Go']
+              pLanguages: ['JavaScript', 'C++', 'Java', 'C#', 'Python', 'Go']
             }
           },
         }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- runtime-only  =>  代码中，不可以有任何的template -->
+  <!-- runtime-compiler  =>  代码中，可以有template，因为compiler可以用于编译template -->
+  <!-- 此div默认就是该vue实例的template -->
+  <!-- 在webpack.config.js中修改别名 -->
+  <div id="app">
+    <h2>{{message}}</h2>
+  </div>
+
+  <script src="./dist/bundle.js"></script>
+</body>
+
+</html>

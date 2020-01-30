@@ -23,3 +23,12 @@ require('./css/normal.css')
 // 4.依赖less文件
 require('./css/special.less')
 document.writeln('你好，小明')
+
+// 5.使用vue进行开发
+import Vue from 'vue'
+const app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello webpack'
+  }
+})

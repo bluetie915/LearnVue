@@ -36,3 +36,5 @@ new Vue({
     App
   }
 })
+
+document.writeln("<span>成功了</span>")

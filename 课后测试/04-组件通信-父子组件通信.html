@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>父子组件通信</title>
+</head>
+<div id="app">
+  <cpn :cpnnum1="num1" :cpnnum2="num2" @cpnnum1change="num1change" @cpnnum2change="num2change"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>父组件num1：{{cpnnum1}}</h2>
+    <h2>子组件datacpn1:{{datanum1}}</h2>
+    <input type="text" v-model="datanum1">
+    <h2>父组件num2：{{cpnnum2}}</h2>
+    <h2>子组件datacpn2:{{datanum2}}</h2>
+    <input type="text" v-model="datanum2">
+  </div>
+</template>
+
+<body>
+  <script src="../Vue Code/js/vue.js"></script>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: {
+        cpnnum1: Number,
+        cpnnum2: Number,
+      },
+      data() {
+        return {
+          datanum1: this.cpnnum1,
+          datanum2: this.cpnnum2
+        }
+      },
+      watch: {
+        datanum1(newValue) {
+          this.$emit('cpnnum1change', newValue)
+          this.datanum2 = this.datanum1 * 10
+          this.$emit('cpnnum2change', newValue)
+        },
+        datanum2(newValue) {
+          this.$emit('cpnnum2change', newValue)
+          this.datanum1 = this.datanum2 / 10
+          this.$emit('cpnnum2change', newValue)
+        }
+      }
+    };
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        num1: 1,
+        num2: 0
+      },
+      components: {
+        cpn
+      },
+      methods: {
+        num1change(newValue) {
+          this.num1 = parseFloat(newValue)
+        },
+        num2change(newValue) {
+          this.num2 = parseFloat(newValue)
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

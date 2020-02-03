@@ -8,9 +8,12 @@
 <script>
 export default {
   name: "Profile",
-  data() {
-    return {};
-  }
+  created() {
+    console.log("Profile created");
+  },
+  destroyed() {
+    console.log("Profile destroyed");
+  },
 };
 </script>
 <style scoped></style>

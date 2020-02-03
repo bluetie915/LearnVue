@@ -27,10 +27,11 @@ const routes = [{
     meta: {
       title: '首页'
     },
-    children: [{
-        path: '',
-        redirect: 'news'
-      },
+    children: [
+      // {
+      //   path: '',
+      //   redirect: 'news'
+      // },
       {
         // 子路由不用加/ 
         path: 'news',
@@ -80,7 +81,7 @@ router.beforeEach((to, from, next) => {
   // 从from跳转到to
   document.title = to.matched[0].meta.title
   // console.log(to);
-  console.log('++++++');
+  // console.log('++++++');
   next()
 })
 
@@ -88,7 +89,7 @@ router.beforeEach((to, from, next) => {
 // 路由独享守卫见About.vue
 // 还有组件内的守卫用到自己去官网看
 router.afterEach((to, from) => {
-  console.log('-----');
+  // console.log('-----');
 })
 
 // 3.将router对象传入到Vue实例

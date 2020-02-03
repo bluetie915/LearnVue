@@ -21,8 +21,11 @@ export default {
     }
   },
   created() {
-    console.log("created");
+    console.log("user created");
     // document.title = "用户";
+  },
+  destroyed() {
+    console.log("user destroyed");
   }
 };
 </script>

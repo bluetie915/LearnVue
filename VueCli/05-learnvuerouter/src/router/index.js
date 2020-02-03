@@ -2,25 +2,56 @@
 import VueRouter from 'vue-router'
 import Vue from 'vue'
 
-import Home from '../components/Home';
-import About from '../components/About';
+// import Home from '../components/Home';
+// import About from '../components/About';
+// import User from '../components/User';
+// 懒加载(在使用的时候加载，不用的时候不加载)
+const Home = () => import('../components/Home')
+const HomeNews = () => import('../components/HomeNews')
+const HomeMessage = () => import('../components/HomeMessage')
+const About = () => import('../components/About')
+const User = () => import('../components/User')
 
 // 1.通过Vue.use(插件)，安装插件
 Vue.use(VueRouter)
 
 // 2.创建VueRouter对象
 const routes = [{
+    path: '',
+    redirect: '/home'
+  },
+  {
     path: '/home',
-    component: Home
+    component: Home,
+    children: [{
+        path: '',
+        redirect: 'news'
+      },
+      {
+        // 子路由不用加/ 
+        path: 'news',
+        component: HomeNews
+      },
+      {
+        path: 'message',
+        component: HomeMessage
+      }
+    ]
   },
   {
     path: '/about',
     component: About
+  },
+  {
+    path: '/user/:abc',
+    component: User
   }
 ]
 const router = new VueRouter({
   // 配置路由和组件之间的应用关系
-  routes
+  routes,
+  mode: 'history',
+  linkActiveClass: 'active'
 })
 
 // 3.将router对象传入到Vue实例

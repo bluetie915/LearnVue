@@ -9,9 +9,9 @@
 export default {
   name: "About",
   data() {
-    return {};
+    return {}
   }
-};
+}
 </script>
 
 <style scoped></style>

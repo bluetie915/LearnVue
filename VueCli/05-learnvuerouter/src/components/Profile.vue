@@ -1,16 +1,13 @@
 <template>
   <div>
-    <ul>
-      <li>新闻1</li>
-      <li>新闻2</li>
-      <li>新闻3</li>
-      <li>新闻4</li>
-    </ul>
+    <h2>我是Profile组件</h2>
+    <h2>{{$route.query}}</h2>
+    <h2>{{$route.query.height}}</h2>
   </div>
 </template>
 <script>
 export default {
-  name: "HomeNews",
+  name: "Profile",
   data() {
     return {};
   }

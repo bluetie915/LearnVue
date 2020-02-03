@@ -8,10 +8,11 @@
 <script type="text/javascript">
 export default {
   name: "About",
-  data() {
-    return {}
+  created() {
+    console.log("created");
+    // document.title = "关于";
   }
-}
+};
 </script>
 
 <style scoped></style>

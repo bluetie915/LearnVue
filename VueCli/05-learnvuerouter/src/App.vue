@@ -18,7 +18,11 @@
 
     <router-link to="/home">首页</router-link>
     <router-link to="/about">关于</router-link>
-    <router-link :to="'/user/' + userId">用户</router-link>
+    <!-- <router-link :to="'/user/' + userId">用户</router-link> -->
+    <!-- <router-link to="/profile">档案</router-link> -->
+    <!-- <router-link :to="{path: '/profile',query: {name: 'why',age: 18, height: 190}}">档案</router-link> -->
+    <button @click="userClick">用户</button>
+    <button @click="profileClick">档案</button>
     <router-view></router-view>
   </div>
 </template>
@@ -29,23 +33,36 @@ export default {
   data() {
     return {
       userId: "zhangsan"
-    }
+    };
   },
   methods: {
     homeClick() {
       // 通过代码的方式修改路径
       // push => pushState
       // this.$router.push('/home')
-      this.$router.replace("/home")
-      console.log("homeClick")
+      this.$router.replace("/home");
+      console.log("homeClick");
     },
     aboutClick() {
       // this.$router.push("/about");
-      this.$router.replace("/about")
-      console.log("aboutClick")
+      this.$router.replace("/about");
+      console.log("aboutClick");
+    },
+    userClick() {
+      this.$router.push("/user/" + this.userId);
+    },
+    profileClick() {
+      this.$router.push({
+        path: "/profile",
+        query: {
+          name: "kobe",
+          age: 19,
+          height: 190
+        }
+      });
     }
   }
-}
+};
 </script>
 
 <style>

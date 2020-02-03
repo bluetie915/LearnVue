@@ -12,8 +12,8 @@
 export default {
   name: "HomeMessage",
   data() {
-    return {}
+    return {};
   }
-}
+};
 </script>
 <style scoped></style>

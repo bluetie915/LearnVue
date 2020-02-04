@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve('aaa')
+      }, 1000)
+    }).then(result => {
+      // 自己处理10行代码
+      console.log(result, "第一层的10行处理代码");
+      // 2.对结果进行第一次处理，拼接111进行下一步
+      return result + '111'
+    }).then(result => {
+      console.log(result, "第二层的10行处理代码");
+      return result + '222'
+    }).then(result => {
+      console.log(result, "第三层的10行处理代码");
+    });
+  </script>
+</body>
+
+</html>

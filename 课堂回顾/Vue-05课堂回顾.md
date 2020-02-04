@@ -1,3 +1,5 @@
+## Vue Day 05
+
 ### 一、webpack
 
 #### 1.1 什么是webpack
@@ -48,11 +50,11 @@
 
 ### 二、Vue CLI
 
-#### 2.1什么是CLI
+#### 2.1 什么是CLI
 
 - 脚手架是什么东西
 - CLI依赖webpack，node，npm
-- 安装CLI3 => 拉去CLI2模块
+- 安装CLI3 => 拉取CLI2模块
 
 
 
@@ -61,4 +63,26 @@
 
 
 #### 2.3 CLI2生产的目录结构的解析
+
+
+
+#### 2.4 runtime-compiler和runtime-only的区别
+
+- ESLint到底是什么
+
+- template => ast => render => virtual DOM => 真实DOM
+- render:(h) => h     (createElement)
+
+
+
+#### 2.5 Vue CLI3
+
+- 如何通过CLI3创建项目
+- CLI3的目录结构
+- 配置文件：
+  - Vue UI
+  - 隐藏的配置文件
+  - 自定义vue.config.js
+
+
 

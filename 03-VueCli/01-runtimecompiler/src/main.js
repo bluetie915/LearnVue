@@ -15,6 +15,7 @@ Vue.config.productionTip = false
 // }
 
 /* eslint-disable no-new */
+// 路由的使用底层原理
 new Vue({
   el: '#app',
   render: function (createElement) {

@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <script>
+    Promise.all([
+      // new Promise((resolve, reject) => {
+      //   $ajax({
+      //     url: 'url1',
+      //     success: function () {
+      //       resolve(data)
+      //     }
+      //   })
+      // }),
+      // new Promise((resolve, reject) => {
+      //   $ajax({
+      //     url: 'url2',
+      //     success: function (data) {
+      //       resolve(data)
+      //     }
+      //   })
+      // })
+
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('result1')
+        }, 2000)
+      }),
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('result2')
+        }, 1000)
+      }),
+    ]).then(results => {
+      // results[0]代表第一个结果
+      // results[1]代表第二个结果
+      console.log(results);
+    });
+  </script>
 </body>
+
 </html>

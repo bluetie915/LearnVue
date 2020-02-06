@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h2 class="title">{{message}}</h2>
+    <h2 class="title">{{ message }}</h2>
     <button @click="btnClick">按钮</button>
-    <h2>{{name}}</h2>
+    <h2>{{ name }}</h2>
     <Cpn></Cpn>
   </div>
 </template>
 
 <script>
-import Cpn from "./Cpn";
+import Cpn from "./Cpn"
 
 export default {
   name: "App",
@@ -19,12 +19,12 @@ export default {
     return {
       message: "Hello webpack",
       name: "blueTie"
-    };
+    }
   },
   methods: {
     btnClick() {}
   }
-};
+}
 </script>
 
 <style>

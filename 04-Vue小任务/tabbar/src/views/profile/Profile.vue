@@ -4,7 +4,6 @@
 <script>
 export default {
   name: "Profile"
-};
+}
 </script>
-<style scoped>
-</style>
+<style scoped></style>

@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-
-<body>
-
-  <div id="app">
-    <cpn :cpnmessage="message"></cpn>
-  </div>
-
-  <template id="cpn">
-    <div>
-      {{cpnmessage}}
+  <body>
+    <div id="app">
+      <cpn :cpnmessage="message"></cpn>
     </div>
-  </template>
 
-  <script src="../Vue Code/js/vue.js"></script>
-  <script>
-    const cpn = {
-      template: '#cpn',
-      props: {
-        cpnmessage: {
-          type: String,
-          default: 'default value'
+    <template id="cpn">
+      <div>
+        {{cpnmessage}}
+      </div>
+    </template>
+
+    <script src="../Vue Code/js/vue.js"></script>
+    <script>
+      const cpn = {
+        template: "#cpn",
+        props: {
+          cpnmessage: {
+            type: String,
+            default: "default value"
+          }
         }
       }
-    }
-    const app = new Vue({
-      el: '#app',
-      data: {
-        message: 'test successfully'
-      },
-      components: {
-        cpn
-      }
-    });
-  </script>
-</body>
-
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "test successfully"
+        },
+        components: {
+          cpn
+        }
+      })
+    </script>
+  </body>
 </html>

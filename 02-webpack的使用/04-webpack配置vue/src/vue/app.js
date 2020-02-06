@@ -8,13 +8,11 @@ export default {
   `,
   data() {
     return {
-      message: 'Hello webpack',
+      message: "Hello webpack",
       name: "blueTie"
     }
   },
   methods: {
-    btnClick() {
-
-    }
+    btnClick() {}
   }
 }

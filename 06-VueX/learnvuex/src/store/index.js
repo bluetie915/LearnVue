@@ -1,8 +1,6 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import {
-  INCREMENT
-} from './mutations-types';
+import Vue from "vue"
+import Vuex from "vuex"
+import { INCREMENT } from "./mutations-types"
 
 // 1.安装插件
 Vue.use(Vuex)
@@ -11,29 +9,30 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     counter: 1000,
-    students: [{
+    students: [
+      {
         id: 1,
-        name: 'why',
+        name: "why",
         age: 18
       },
       {
         id: 2,
-        name: 'kobe',
+        name: "kobe",
         age: 24
       },
       {
         id: 3,
-        name: 'bluetie',
+        name: "bluetie",
         age: 19
       },
       {
         id: 4,
-        name: 'tom',
+        name: "tom",
         age: 22
       }
     ],
     info: {
-      name: 'kobe',
+      name: "kobe",
       age: 19,
       height: 198
     }
@@ -55,9 +54,9 @@ const store = new Vuex.Store({
     },
     updateInfo(state) {
       // state可以满足一般的修改，但是新增和删除不能使用传统方法
-      // state.info.name = 'bluetie'
+      state.info.name = "bluetie"
 
-      // 数组方法新增不是响应式的 
+      // 数组方法新增不是响应式的
       // state.info['address'] = 'China'
 
       // 用Vue.set可以实现响应式
@@ -70,12 +69,33 @@ const store = new Vuex.Store({
       // Vue.delete(state.info, 'height')
 
       // mutations无法检测异步操作，所有不要在mutations中使用异步操作
-      setTimeout(() => {
-        state.info.name = 'bluetie'
-      }, 1000);
+      // 想要异步修改，必须在actions中调用mutations
+      // setTimeout(() => {
+      //   state.info.name = 'bluetie'
+      // }, 1000);
     }
   },
-  actions: {},
+  actions: {
+    // context：上下文
+    // aUpdateInfo(context, payload) {
+    //   setTimeout(() => {
+    //     context.commit('updateInfo')
+    // 在传递完成之后，要返回一个通知，告诉已经完成了
+    //     console.log(payload.message)
+    //     payload.success()
+    //   }, 1000);
+    // }
+
+    aUpdateInfo(context, payload) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          context.commit("updateInfo")
+          console.log(payload)
+          resolve()
+        }, 1000)
+      })
+    }
+  },
   getters: {
     powerCounter(state) {
       return state.counter * state.counter

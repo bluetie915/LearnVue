@@ -29,18 +29,18 @@ export default {
       // /home -> item1(/category) = false
       // /home -> item1(/cart) = false
       // /home -> item1(/profile) = false
-      return this.$route.path.indexOf(this.path) !== -1;
+      return this.$route.path.indexOf(this.path) !== -1
     },
     activeStyle() {
-      return this.isActive ? { color: this.activeColor } : {};
+      return this.isActive ? { color: this.activeColor } : {}
     }
   },
   methods: {
     itemClick() {
-      this.$router.replace(this.path);
+      this.$router.replace(this.path)
     }
   }
-};
+}
 </script>
 <style scoped>
 .tab-bar-item {

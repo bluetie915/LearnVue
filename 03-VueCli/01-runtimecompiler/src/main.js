@@ -1,9 +1,9 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
+import Vue from "vue";
+import App from "./App";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 // const cpn = {
 //   template: `<div>{{message}}</div>`,
@@ -17,8 +17,8 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 // 路由的使用底层原理
 new Vue({
-  el: '#app',
-  render: function (createElement) {
+  el: "#app",
+  render: function(createElement) {
     // 1.普通用法：createElement('标签', {标签的属性}, [''])
     //   return createElement('h2',
     //     {class: 'box'},
@@ -28,13 +28,13 @@ new Vue({
     // return createElement(cpn)
 
     // 3.正规的写法
-    return createElement(App)
+    return createElement(App);
   }
   // components: {
   //   App
   // },
   // template: '<App/>'
-})
+});
 
 // runtime-compiler
 // template -> ast -> render -> virtual dom -> UI

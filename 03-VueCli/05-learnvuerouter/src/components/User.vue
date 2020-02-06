@@ -2,7 +2,7 @@
   <div>
     <h2>我是用户界面</h2>
     <p>我是用户信息</p>
-    <h2>{{userId}}</h2>
+    <h2>{{ userId }}</h2>
     <button @click="btnClick">按钮</button>
   </div>
 </template>

@@ -6,7 +6,7 @@
 <script>
 export default {
   name: "TabBar"
-};
+}
 </script>
 <style scoped>
 #tab-bar {

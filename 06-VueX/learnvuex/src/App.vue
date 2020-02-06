@@ -1,6 +1,14 @@
 <template>
   <div id="app">
-    <h2>--------Hello info对象的内容是否是响应式--------</h2>
+    <h2>--------App内容 modules中的内容--------</h2>
+    <h2>模块中的state：{{ $store.state.a.name }}</h2>
+    <button @click="updateName">修改名字</button>
+    <h2>模块中的getters：{{ $store.getters.fullName }}</h2>
+    <h2>模块中的getters使用自己传参：{{ $store.getters.fullName2 }}</h2>
+    <h2>模块中的getters使用根模块的state：{{ $store.getters.fullName3 }}</h2>
+    <button @click="asyncUpdateName">异步修改</button>
+
+    <h2>--------App内容 info对象的内容是否是响应式--------</h2>
     <h2>{{ $store.state.info }}</h2>
     <button @click="updateInfo">修改信息</button>
 
@@ -96,7 +104,17 @@ export default {
       //   }
       // });
 
-      this.$store.dispatch("aUpdateInfo", "我是携带的信息")
+      this.$store.dispatch("aUpdateInfo", "我是携带的信息").then(res => {
+        console.log("里面完成了提交")
+        console.log(res)
+      })
+    },
+    updateName() {
+      // 优先去找mutaions中的方法，找不到再去找modules中的方法
+      this.$store.commit("updateName", "Alice")
+    },
+    asyncUpdateName() {
+      this.$store.dispatch("aUpdateName")
     }
   }
 }

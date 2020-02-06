@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import {
+  INCREMENT
+} from './mutations-types';
 
 // 1.安装插件
 Vue.use(Vuex)
@@ -28,17 +31,48 @@ const store = new Vuex.Store({
         name: 'tom',
         age: 22
       }
-    ]
+    ],
+    info: {
+      name: 'kobe',
+      age: 19,
+      height: 198
+    }
   },
   mutations: {
     // 方法
-    increment(state) {
-      console.log("+++")
+    [INCREMENT](state) {
       state.counter++
     },
     decrement(state) {
-      console.log("---")
       state.counter--
+    },
+    incrementCount(state, payload) {
+      // state.counter += count
+      state.counter += payload.count
+    },
+    addStudent(state, stu) {
+      state.students.push(stu)
+    },
+    updateInfo(state) {
+      // state可以满足一般的修改，但是新增和删除不能使用传统方法
+      // state.info.name = 'bluetie'
+
+      // 数组方法新增不是响应式的 
+      // state.info['address'] = 'China'
+
+      // 用Vue.set可以实现响应式
+      // Vue.set(state.info, 'address', 'China')
+
+      // delete方法删除不是响应式
+      // delete state.info.height
+
+      // 用Vue.delete可以做到响应式
+      // Vue.delete(state.info, 'height')
+
+      // mutations无法检测异步操作，所有不要在mutations中使用异步操作
+      setTimeout(() => {
+        state.info.name = 'bluetie'
+      }, 1000);
     }
   },
   actions: {},

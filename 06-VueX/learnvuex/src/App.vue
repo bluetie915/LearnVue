@@ -1,15 +1,24 @@
 <template>
   <div id="app">
+    <h2>--------Hello info对象的内容是否是响应式--------</h2>
+    <h2>{{$store.state.info}}</h2>
+    <button @click="updateInfo">修改信息</button>
+
     <h2>--------App内容--------</h2>
     <h2>{{message}}</h2>
     <h2>{{counter}}</h2>
     <button @click="add">+</button>
     <button @click="sub">-</button>
+    <button @click="addCount(5)">+5</button>
+    <button @click="addCount(10)">+10</button>
+    <button @click="addStu(10)">添加学生</button>
+
     <h2>--------App内容：getters相关信息--------</h2>
     <h2>counter的平方：{{powerCounter}}</h2>
     <h2>年龄大于20的学生：{{more20stu}}</h2>
     <h2>年龄大于20的学生的个数：{{more20stuLength}}</h2>
     <h2>年龄大于age的学生个数：{{$store.getters.moreAgeStu(22)}}</h2>
+
     <h2>--------Hello Vuex内容--------</h2>
     <!-- 可以使用父子组件通信 -->
     <!-- <hello-vuex :cpncounter="counter"></hello-vuex> -->
@@ -19,6 +28,7 @@
 
 <script>
 import HelloVuex from "./components/HelloVuex";
+import { INCREMENT } from "./store/mutations-types";
 export default {
   name: "app",
   components: {
@@ -49,10 +59,32 @@ export default {
   },
   methods: {
     add() {
-      this.$store.commit("increment");
+      this.$store.commit(INCREMENT);
     },
     sub() {
       this.$store.commit("decrement");
+    },
+    addCount(count) {
+      // payload：负载
+      // 1.普通的提交封装
+      // this.$store.commit("incrementCount", count);
+
+      // 2.特殊的提交封装
+      this.$store.commit({
+        type: "incrementCount",
+        count
+      });
+    },
+    addStu() {
+      const stu = {
+        id: 4,
+        name: "alan",
+        age: 25
+      };
+      this.$store.commit("addStudent", stu);
+    },
+    updateInfo() {
+      this.$store.commit("updateInfo");
     }
   }
 };

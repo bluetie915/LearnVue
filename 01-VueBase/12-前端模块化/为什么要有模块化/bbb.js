@@ -1,9 +1,8 @@
 // 小红开发时用到的js
-;
-var moduleB = (function () {
+var moduleB = (function() {
   var obj = {}
 
-  var name = '小红'
+  var name = "小红"
   var flag = false
 
   console.log(name)

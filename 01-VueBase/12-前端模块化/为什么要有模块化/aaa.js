@@ -1,9 +1,9 @@
 // 小明开发时用到的js
-var moduleA = (function () {
+var moduleA = (function() {
   // 导出的对象
   var obj = {}
 
-  var name = '小明'
+  var name = "小明"
   var age = 22
 
   function sum(num1, num2) {

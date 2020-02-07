@@ -2,6 +2,7 @@ import Vue from "vue"
 import App from "./App.vue"
 
 import axios from "axios"
+import { request } from "./network/request"
 
 Vue.config.productionTip = false
 
@@ -72,20 +73,41 @@ new Vue({
 //   )
 
 // 4.创建对应的axios实例
-const instance1 = axios.create({
-  baseURL: "http://123.207.32.32:8000",
-  timeout: 5000
-})
+// const instance1 = axios.create({
+//   baseURL: "http://123.207.32.32:8000",
+//   timeout: 5000
+// })
 
-instance1({
+// instance1({
+//   url: "/home/multidata"
+// }).then(res => {
+//   console.log(res)
+// })
+// instance1({
+//   url: "/home/data",
+//   params: {
+//     type: "pop",
+//     age: 2
+//   }
+// }).then(res => {
+//   console.log(res)
+// })
+
+// 每个实例都有自己的配置
+// const instance2 = axios.create({
+//   baseURL: "http://localhost:8080/home",
+//   timeout: 8000,
+//   headers: {}
+// })
+
+// 5.封装一个request模块
+
+request({
   url: "/home/multidata"
-}).then(res => {
-  console.log(res)
 })
-instance1({
-  url: "/home/data",
-  params: {
-    type: "pop",
-    age: 2
-  }
-})
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => {
+    console.log(err)
+  })

@@ -1,90 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-
-<body>
-
-  <!-- 子组件没有权利修改父组件的内容，要想修改内容只能在子组件中新建刑事一个新的对象
+  <body>
+    <!-- 子组件没有权利修改父组件的内容，要想修改内容只能在子组件中新建刑事一个新的对象
       然后先将原来父组件的内容赋值级子组件中的新的对象即可-->
-  <!-- 简单说就是先把该内容在子组件复制一份，然后自己改自己的 -->
-  <!-- 将子组件中修改的新的值反向再传回父组件中 -->
-  <div id="app">
-    <cpn :cpnnum1="num1" :cpnnum2="num2" @num1change="num1change" @num2change="num2change"></cpn>
-  </div>
-
-  <template id="cpn">
-    <div>
-      <h2>props:{{cpnnum1}}</h2>
-      <h2>data:{{datanumber1}}</h2>
-      <p>测试子组件修改</p>
-      <input type="text" v-model="datanumber1">
-      <p>测试子组件修改后返回给父组件</p>
-      <input type="text" :value="datanumber1" @input="num1Input">
-      <h2>props:{{cpnnum2}}</h2>
-      <h2>data:{{datanumber2}}</h2>
-      <p>测试子组件修改</p>
-      <input type="text" v-model="datanumber2">
-      <p>测试子组件修改后返回给父组件</p>
-      <input type="text" :value="datanumber2" @input="num2Input">
+    <!-- 简单说就是先把该内容在子组件复制一份，然后自己改自己的 -->
+    <!-- 将子组件中修改的新的值反向再传回父组件中 -->
+    <div id="app">
+      <cpn
+        :cpnnum1="num1"
+        :cpnnum2="num2"
+        @num1change="num1change"
+        @num2change="num2change"
+      ></cpn>
     </div>
-  </template>
 
-  <script src="../js/vue.js"></script>
-  <script>
-    const app = new Vue({
-      el: '#app',
-      data: {
-        num1: 1,
-        num2: 0
-      },
-      methods: {
-        num1change(value) {
-          this.num1 = parseFloat(value)
+    <template id="cpn">
+      <div>
+        <h2>props:{{cpnnum1}}</h2>
+        <h2>data:{{datanumber1}}</h2>
+        <p>测试子组件修改</p>
+        <input type="text" v-model="datanumber1" />
+        <p>测试子组件修改后返回给父组件</p>
+        <input type="text" :value="datanumber1" @input="num1Input" />
+        <h2>props:{{cpnnum2}}</h2>
+        <h2>data:{{datanumber2}}</h2>
+        <p>测试子组件修改</p>
+        <input type="text" v-model="datanumber2" />
+        <p>测试子组件修改后返回给父组件</p>
+        <input type="text" :value="datanumber2" @input="num2Input" />
+      </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          num1: 1,
+          num2: 0
         },
-        num2change(value) {
-          this.num2 = parseFloat(value)
-        }
-      },
-      components: {
-        cpn: {
-          template: '#cpn',
-          props: {
-            cpnnum1: Number,
-            cpnnum2: Number
+        methods: {
+          num1change(value) {
+            this.num1 = parseFloat(value)
           },
-          data() {
-            return {
-              datanumber1: this.cpnnum1,
-              datanumber2: this.cpnnum2
-            }
-          },
-          methods: {
-            num1Input(event) {
-              // 1.将input中的value赋值到datanumber1中
-              this.datanumber1 = event.target.value
-
-              // 2.为了让父组件可以修改值，发出一个事件
-              this.$emit('num1change', this.datanumber1)
-
-              // 3.同时修改datanumber2的值
-              this.datanumber2 = this.datanumber1 * 100
-              this.$emit('num2change', this.datanumber2)
+          num2change(value) {
+            this.num2 = parseFloat(value)
+          }
+        },
+        components: {
+          cpn: {
+            template: "#cpn",
+            props: {
+              cpnnum1: Number,
+              cpnnum2: Number
             },
-            num2Input(event) {
-              this.datanumber2 = event.target.value
-              this.$emit('num2change', this.datanumber2)
-              this.datanumber1 = this.datanumber2 / 100
-              this.$emit('num1change', this.datanumber1)
-            }
-          },
-        }
-      }
-    });
-  </script>
-</body>
+            data() {
+              return {
+                datanumber1: this.cpnnum1,
+                datanumber2: this.cpnnum2
+              }
+            },
+            methods: {
+              num1Input(event) {
+                // 1.将input中的value赋值到datanumber1中
+                this.datanumber1 = event.target.value
 
+                // 2.为了让父组件可以修改值，发出一个事件
+                this.$emit("num1change", this.datanumber1)
+
+                // 3.同时修改datanumber2的值
+                this.datanumber2 = this.datanumber1 * 100
+                this.$emit("num2change", this.datanumber2)
+              },
+              num2Input(event) {
+                this.datanumber2 = event.target.value
+                this.$emit("num2change", this.datanumber2)
+                this.datanumber1 = this.datanumber2 / 100
+                this.$emit("num1change", this.datanumber1)
+              }
+            }
+          }
+        }
+      })
+    </script>
+  </body>
 </html>

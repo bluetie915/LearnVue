@@ -1,32 +1,33 @@
 const app = new Vue({
-  el: '#app',
+  el: "#app",
   data: {
-    books: [{
+    books: [
+      {
         id: 1,
-        name: '《操作系统》',
-        createDate: '2006-9',
-        price: 85.00,
+        name: "《操作系统》",
+        createDate: "2006-9",
+        price: 85.0,
         amount: 1
       },
       {
         id: 2,
-        name: '《UNIX编程艺术》',
-        createDate: '2006-2',
-        price: 59.00,
+        name: "《UNIX编程艺术》",
+        createDate: "2006-2",
+        price: 59.0,
         amount: 1
       },
       {
         id: 3,
-        name: '《编程珠玑》',
-        createDate: '2008-10',
-        price: 39.00,
+        name: "《编程珠玑》",
+        createDate: "2008-10",
+        price: 39.0,
         amount: 1
       },
       {
         id: 4,
-        name: '《代码大全》',
-        createDate: '2004-3',
-        price: 128.00,
+        name: "《代码大全》",
+        createDate: "2004-3",
+        price: 128.0,
         amount: 1
       }
     ]
@@ -55,10 +56,9 @@ const app = new Vue({
       // return totalPrice
 
       // 4.reduce
-      return this.books.reduce(function (preValue, book) {
+      return this.books.reduce(function(preValue, book) {
         return preValue + book.price * book.amount
       }, 0)
-
     }
   },
   methods: {
@@ -80,4 +80,4 @@ const app = new Vue({
       return "￥" + price.toFixed(2)
     }
   }
-});
+})

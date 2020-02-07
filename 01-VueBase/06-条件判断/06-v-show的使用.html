@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
+  <body>
+    <div id="app">
+      <!-- 如果判断失败，则对应的元素不存在 -->
+      <h2 v-if="isShow">{{message}}</h2>
 
-<body>
+      <!-- 如果判断失败，则对应的元素依然存在，只是隐藏了(display:none) -->
+      <h2 v-show="isShow">{{message}}</h2>
+    </div>
 
-  <div id="app">
-    <!-- 如果判断失败，则对应的元素不存在 -->
-    <h2 v-if="isShow">{{message}}</h2>
-
-    <!-- 如果判断失败，则对应的元素依然存在，只是隐藏了(display:none) -->
-    <h2 v-show="isShow">{{message}}</h2>
-  </div>
-
-  <!-- 当需要在显示与隐藏之间切片很频繁时，使用v-show -->
-  <!-- 当只有一次切换时，通过使用v-if -->
-  <script src="../js/vue.js"></script>
-  <script>
-    const app = new Vue({
-      el: '#app',
-      data: {
-        message: '你好',
-        isShow: true
-      }
-    });
-  </script>
-</body>
-
+    <!-- 当需要在显示与隐藏之间切片很频繁时，使用v-show -->
+    <!-- 当只有一次切换时，通过使用v-if -->
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "你好",
+          isShow: true
+        }
+      })
+    </script>
+  </body>
 </html>

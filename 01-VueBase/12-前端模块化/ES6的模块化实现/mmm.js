@@ -1,26 +1,17 @@
 // 1.导入的{}中定义的变量
-import {
-  flag,
-  sum
-} from "./aaa.js"
+import { flag, sum } from "./aaa.js"
 if (flag) {
-  console.log('小明是天才')
+  console.log("小明是天才")
   console.log(sum(90, 390))
 }
 
 // 2.直接导入export定义的变量
-import {
-  num1,
-  height
-} from "./aaa"
+import { num1, height } from "./aaa"
 console.log(num1)
 console.log(height)
 
 // 3.导入export的function/class
-import {
-  mul,
-  Person
-} from "./aaa"
+import { mul, Person } from "./aaa"
 console.log(mul(10, 28))
 
 const p = new Person()

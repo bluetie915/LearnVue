@@ -1,75 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-
-<body>
-
-  <div id="app">
-    <cpn :cpnnum1="num1" :cpnnum2="num2" @num1change="num1change" @num2change="num2change"></cpn>
-  </div>
-
-  <template id="cpn">
-    <div>
-      <h2>props:{{cpnnum1}}</h2>
-      <h2>data:{{datanumber1}}</h2>
-      <p>测试子组件修改</p>
-      <input type="text" v-model="datanumber1">
-      <h2>props:{{cpnnum2}}</h2>
-      <h2>data:{{datanumber2}}</h2>
-      <p>测试子组件修改</p>
-      <input type="text" v-model="datanumber2">
+  <body>
+    <div id="app">
+      <cpn
+        :cpnnum1="num1"
+        :cpnnum2="num2"
+        @num1change="num1change"
+        @num2change="num2change"
+      ></cpn>
     </div>
-  </template>
 
-  <script src="../js/vue.js"></script>
-  <script>
-    const app = new Vue({
-      el: '#app',
-      data: {
-        num1: 1,
-        num2: 0
-      },
-      methods: {
-        num1change(value) {
-          this.num1 = parseFloat(value)
+    <template id="cpn">
+      <div>
+        <h2>props:{{cpnnum1}}</h2>
+        <h2>data:{{datanumber1}}</h2>
+        <p>测试子组件修改</p>
+        <input type="text" v-model="datanumber1" />
+        <h2>props:{{cpnnum2}}</h2>
+        <h2>data:{{datanumber2}}</h2>
+        <p>测试子组件修改</p>
+        <input type="text" v-model="datanumber2" />
+      </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          num1: 1,
+          num2: 0
         },
-        num2change(value) {
-          this.num2 = parseFloat(value)
-        }
-      },
-      components: {
-        cpn: {
-          template: '#cpn',
-          props: {
-            cpnnum1: Number,
-            cpnnum2: Number
+        methods: {
+          num1change(value) {
+            this.num1 = parseFloat(value)
           },
-          data() {
-            return {
-              datanumber1: this.cpnnum1,
-              datanumber2: this.cpnnum2
-            }
-          },
-          watch: {
-            datanumber1(newValue) {
-              this.$emit('num1change', newValue)
-              this.datanumber2 = newValue * 100
-              this.$emit('num2change', this.datanumber2)
+          num2change(value) {
+            this.num2 = parseFloat(value)
+          }
+        },
+        components: {
+          cpn: {
+            template: "#cpn",
+            props: {
+              cpnnum1: Number,
+              cpnnum2: Number
             },
-            datanumber2(newValue) {
-              this.$emit('num2change', newValue)
-              this.datanumber1 = newValue / 100
-              this.$emit('num1change', this.datanumber1)
+            data() {
+              return {
+                datanumber1: this.cpnnum1,
+                datanumber2: this.cpnnum2
+              }
+            },
+            watch: {
+              datanumber1(newValue) {
+                this.$emit("num1change", newValue)
+                this.datanumber2 = newValue * 100
+                this.$emit("num2change", this.datanumber2)
+              },
+              datanumber2(newValue) {
+                this.$emit("num2change", newValue)
+                this.datanumber1 = newValue / 100
+                this.$emit("num1change", this.datanumber1)
+              }
             }
           }
         }
-      }
-    });
-  </script>
-</body>
-
+      })
+    </script>
+  </body>
 </html>

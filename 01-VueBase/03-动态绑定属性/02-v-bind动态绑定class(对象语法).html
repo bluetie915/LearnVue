@@ -1,53 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      .active {
+        color: red;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <style>
-    .active {
-      color: red;
-    }
+      .active2 {
+        font-size: 36px;
+        font-style: italic;
+      }
+    </style>
+  </head>
 
-    .active2 {
-      font-size: 36px;
-      font-style: italic;
-    }
-  </style>
-</head>
+  <body>
+    <div id="app">
+      <h2 class="active">{{message}}</h2>
+      <h2 :class="active">{{message}}</h2>
+      <!-- <h2 :class="{类名1: boolean, 类名2:boolean}">{{message}}</h2> -->
+      <h2 :class="{active: isActive, active2:isActive2}">{{message}}</h2>
+      <h2 class="title" :class="getClasses()">{{message}}</h2>
+      <!-- 如果在此手写原生的class，不会出现覆盖，系统会自动合并 -->
+      <button v-on:click="btnClick">更改</button>
+    </div>
 
-<body>
-
-  <div id="app">
-    <h2 class="active">{{message}}</h2>
-    <h2 :class="active">{{message}}</h2>
-    <!-- <h2 :class="{类名1: boolean, 类名2:boolean}">{{message}}</h2> -->
-    <h2 :class="{active: isActive, active2:isActive2}">{{message}}</h2>
-    <h2 class="title" :class="getClasses()">{{message}}</h2>
-    <!-- 如果在此手写原生的class，不会出现覆盖，系统会自动合并 -->
-    <button v-on:click="btnClick">更改</button>
-  </div>
-
-  <script src="../js/vue.js"></script>
-  <script>
-    const app = new Vue({
-      el: '#app',
-      data: {
-        message: '你好',
-        active: 'active2',
-        isActive: true,
-        isActive2: true
-      },
-      methods: {
-        btnClick: function () {
-          this.isActive = !this.isActive;
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "你好",
+          active: "active2",
+          isActive: true,
+          isActive2: true
         },
-        getClasses: function () {
-          return { active: this.isActive, active2: this.isActive2 };
+        methods: {
+          btnClick: function() {
+            this.isActive = !this.isActive
+          },
+          getClasses: function() {
+            return { active: this.isActive, active2: this.isActive2 }
+          }
         }
-      },
-    });
-  </script>
-</body>
-
+      })
+    </script>
+  </body>
 </html>

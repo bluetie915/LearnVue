@@ -6,10 +6,11 @@
 // false：当返回false时，函数内部会过滤掉这次的n
 const nums = [10, 20, 40, 50, 234, 111]
 
-
-let total = nums.filter(n => n < 100).map(n => n * 2).reduce((pre, n) => pre + n)
-console.log(total);
-
+let total = nums
+  .filter(n => n < 100)
+  .map(n => n * 2)
+  .reduce((pre, n) => pre + n)
+console.log(total)
 
 // let total = nums.filter(function (n) {
 //     return n < 100
@@ -38,8 +39,6 @@ console.log(total);
 //     return preValue + n
 // },0)
 // console.log(total)
-
-
 
 // // 1.需求：取出所有小于100的数字
 // let newNums = []

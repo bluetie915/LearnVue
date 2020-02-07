@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-
-<body>
-  <script>
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // resolve("Helo Vuejs")
-        reject("error message")
-      }, 1000)
-    }).then(data => {
-      console.log(data)
-    }, error => {
-      console.log(error)
-    });
-  </script>
-</body>
-
+  <body>
+    <script>
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // resolve("Helo Vuejs")
+          reject("error message")
+        }, 1000)
+      }).then(
+        data => {
+          console.log(data)
+        },
+        error => {
+          console.log(error)
+        }
+      )
+    </script>
+  </body>
 </html>

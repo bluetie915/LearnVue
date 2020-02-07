@@ -1,54 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-
-<body>
-  <!-- 
+  <body>
+    <!-- 
     1.插槽的基本使用    <slot></slot>
     2.默认值    <slot><button>案例</button></slot>
     3.如果有多个同时放到组件进行替换时，一起作为替换元素
   -->
 
-  <div id="app">
-    <cpn><button>案例</button></cpn>
-    <cpn><span>哈哈</span></cpn>
-    <cpn>
-      <i>这是斜体</i>
-      <h4>我是四级标题</h4>
-      <div>我是div，我们三个都会被替换</div>
-    </cpn>
-    <cpn></cpn>
-    <cpn></cpn>
-    <cpn></cpn>
-  </div>
-
-  <template id="cpn">
-    <div>
-      <br>
-      <h2>我是组件</h2>
-      <p>我是组件，哈哈哈</p>
-      <slot><button>案例</button></slot>
+    <div id="app">
+      <cpn><button>案例</button></cpn>
+      <cpn><span>哈哈</span></cpn>
+      <cpn>
+        <i>这是斜体</i>
+        <h4>我是四级标题</h4>
+        <div>我是div，我们三个都会被替换</div>
+      </cpn>
+      <cpn></cpn>
+      <cpn></cpn>
+      <cpn></cpn>
     </div>
-  </template>
 
-  <script src="../js/vue.js"></script>
-  <script>
-    const app = new Vue({
-      el: '#app',
-      data: {
-        message: '你好'
-      },
-      components: {
-        cpn: {
-          template: '#cpn'
+    <template id="cpn">
+      <div>
+        <br />
+        <h2>我是组件</h2>
+        <p>我是组件，哈哈哈</p>
+        <slot><button>案例</button></slot>
+      </div>
+    </template>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "你好"
+        },
+        components: {
+          cpn: {
+            template: "#cpn"
+          }
         }
-      }
-    });
-  </script>
-</body>
-
+      })
+    </script>
+  </body>
 </html>

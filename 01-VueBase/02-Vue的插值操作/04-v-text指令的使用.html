@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
+  <body>
+    <div id="app">
+      <!-- 拼接字符串 -->
+      <h2>{{message}}，张艺成</h2>
+      <!-- 覆盖字符串 -->
+      <h2 v-text="message">，张艺成</h2>
+    </div>
 
-<body>
-
-  <div id="app">
-    <!-- 拼接字符串 -->
-    <h2>{{message}}，张艺成</h2>
-    <!-- 覆盖字符串 -->
-    <h2 v-text="message">，张艺成</h2>
-  </div>
-
-  <script src="../js/vue.js"></script>
-  <script>
-    const app = new Vue({
-      el: '#app',
-      data: {
-        message: '你好'
-      }
-    });
-  </script>
-</body>
-
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "你好"
+        }
+      })
+    </script>
+  </body>
 </html>

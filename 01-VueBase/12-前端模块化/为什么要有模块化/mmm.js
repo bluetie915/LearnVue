@@ -1,8 +1,7 @@
-;
-(function () {
+;(function() {
   // 1.使用flag
   if (moduleA.flag) {
-    console.log('小明是天才')
+    console.log("小明是天才")
   }
 
   // 2.使用sum函数

@@ -1,59 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
+  <body>
+    <!-- 作用域插槽：父组件修改子组件的展示方法，内容还是子组件的内容 -->
+    <div id="app">
+      <cpn></cpn>
+      <!-- 目的是获取子组件中的pLanguages -->
+      <cpn>
+        <template slot-scope="slot">
+          <span v-for="item in slot.languages">{{item}} - </span>
+        </template>
+      </cpn>
 
-<body>
-
-  <!-- 作用域插槽：父组件修改子组件的展示方法，内容还是子组件的内容 -->
-  <div id="app">
-    <cpn></cpn>
-    <!-- 目的是获取子组件中的pLanguages -->
-    <cpn>
-      <template slot-scope="slot">
-        <span v-for="item in slot.languages">{{item}} - </span>
-      </template>
-    </cpn>
-
-    <cpn>
-      <template slot-scope="slot2">
-        <!-- 要去掉最后一个 *，可以用join方法 -->
-        <span v-for="item in slot2.languages.join(' * ')">{{item}}</span>
-      </template>
-    </cpn>
-  </div>
-
-  <template id="cpn">
-    <div>
-      <slot :languages="pLanguages">
-        <ul>
-          <li v-for="item in pLanguages">{{item}}</li>
-        </ul>
-      </slot>
+      <cpn>
+        <template slot-scope="slot2">
+          <!-- 要去掉最后一个 *，可以用join方法 -->
+          <span v-for="item in slot2.languages.join(' * ')">{{item}}</span>
+        </template>
+      </cpn>
     </div>
-  </template>
-  <script src="../js/vue.js"></script>
-  <script>
-    const app = new Vue({
-      el: '#app',
-      data: {
-        message: '你好'
-      },
-      components: {
-        cpn: {
-          template: '#cpn',
-          data() {
-            return {
-              pLanguages: ['JavaScript', 'C++', 'Java', 'C#', 'Python', 'Go']
-            }
-          },
-        }
-      }
-    });
-  </script>
-</body>
 
+    <template id="cpn">
+      <div>
+        <slot :languages="pLanguages">
+          <ul>
+            <li v-for="item in pLanguages">{{item}}</li>
+          </ul>
+        </slot>
+      </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "你好"
+        },
+        components: {
+          cpn: {
+            template: "#cpn",
+            data() {
+              return {
+                pLanguages: ["JavaScript", "C++", "Java", "C#", "Python", "Go"]
+              }
+            }
+          }
+        }
+      })
+    </script>
+  </body>
 </html>

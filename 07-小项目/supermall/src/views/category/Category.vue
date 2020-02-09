@@ -123,7 +123,9 @@ export default {
   mounted() {
     this.scroll = new BScroll(".wrapper", {
       probeType: 3,
-      pullUpLoad: true
+      pullUpLoad: true,
+      // 如果better-scroll范围中的div想要被点击，必须设置叠click为true
+      click: true
     })
     this.scroll.on("scroll", position => {
       // console.log(position)

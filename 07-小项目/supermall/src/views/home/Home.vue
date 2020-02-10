@@ -100,7 +100,7 @@ export default {
      * 事件监听相关的方法
      */
     tabClick(index) {
-      console.log(index)
+      // console.log(index)
       switch (index) {
         case 0:
           this.currentType = "pop"
@@ -125,7 +125,7 @@ export default {
       this.isTabFixed = -position.y > this.tabOffsetTop
     },
     loadMore() {
-      console.log("加载更多")
+      // console.log("加载更多")
       this.getHomeGoods(this.currentType)
     },
     // 获取tabContrl的offsetTop

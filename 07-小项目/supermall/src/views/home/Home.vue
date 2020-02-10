@@ -7,8 +7,8 @@
       :probe-type="3"
       @scroll="contentScroll"
       :pull-up-load="true"
+      @pullingUp="loadMore"
     >
-      <!-- @pullingUp="loadMore" -->
       <home-swiper :banners="banners" />
       <recommend-view :recommends="recommends" />
       <feature-view></feature-view>
@@ -35,6 +35,7 @@ import Scroll from "components/common/scroll/Scroll"
 import BackTop from "components/content/backTop/BackTop"
 
 import { getHomeMultidata, getHomeGoods } from "network/home"
+import { debounce } from "common/util.js"
 
 export default {
   name: "Home",
@@ -76,7 +77,7 @@ export default {
     this.getHomeGoods("sell")
   },
   mounted() {
-    const refresh = this.debounce(this.$refs.scroll.refresh, 80)
+    const refresh = debounce(this.$refs.scroll.refresh, 80)
     this.$bus.$on("itemImageLoad", () => {
       // console.log("------")
       // 没有设置防抖
@@ -88,16 +89,6 @@ export default {
     /**
      * 事件监听相关的方法
      */
-    // 防抖函数
-    debounce(func, delay) {
-      let timer = null
-      return function(...args) {
-        if (timer) clearTimeout(timer)
-        timer = setTimeout(() => {
-          func.apply(this, args)
-        }, delay)
-      }
-    },
     tabClick(index) {
       console.log(index)
       switch (index) {
@@ -117,6 +108,10 @@ export default {
     contentScroll(position) {
       this.isShowBackTop = -position.y > 1000
     },
+    loadMore() {
+      console.log("加载更多")
+      this.getHomeGoods(this.currentType)
+    },
     /**
      * 网络请求相关的方法
      */
@@ -131,7 +126,8 @@ export default {
       getHomeGoods(type, page).then(res => {
         this.goods[type].list.push(...res.data.list)
         this.goods[type].page += 1
-        // this.$refs.scroll.finishPullUp()
+        // 刷新每次只能加载一次
+        this.$refs.scroll.finishPullUp()
       })
     }
   }

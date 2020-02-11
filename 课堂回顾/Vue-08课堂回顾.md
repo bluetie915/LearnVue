@@ -28,3 +28,12 @@
   - 当我们滚动到一定位置时，PlaceHolderTabControl显示出来
   - 当用户滚动没有达到一定位置时，PlaceHolderTabControl隐藏起来
 
+
+
+### 十、让Home保持原来的状态
+
+#### 10.1 让Home不要随意销毁掉
+
+- keep-alive
+
+#### 10.2 让Home中的内容保持原来的位置(新版本已经自动保存)

@@ -68,13 +68,24 @@ export default {
       currentType: "pop",
       isShowBackTop: false,
       tabOffsetTop: 0,
-      isTabFixed: false
+      isTabFixed: false,
+      saveY: 0
     }
   },
   computed: {
     showGoods() {
       return this.goods[this.currentType].list
     }
+  },
+  activated() {
+    // console.log("进入")
+    this.$refs.scroll.refresh()
+    this.$refs.scroll.scrollTo(0, this.saveY, 0)
+  },
+  deactivated() {
+    // console.log("离开")
+    this.saveY = this.$refs.scroll.getScrollY()
+    console.log(this.saveY)
   },
   created() {
     // 1.请求多个数据

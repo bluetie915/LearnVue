@@ -3,7 +3,7 @@
     <goods-list-item
       v-for="(item, index) in goods"
       :key="index"
-      :goods-item="item"
+      :product="item"
     />
   </div>
 </template>

@@ -7,6 +7,8 @@
       <detail-shop-info :shop="shop" />
       <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad" />
       <detail-param-info :param-info="paramInfo" />
+      <detail-comment-info :comment-info="commentInfo" />
+      <goods-list :goods="recommends" />
     </scroll>
   </div>
 </template>
@@ -17,10 +19,20 @@ import DetailBaseInfo from "./childComp/DetailBaseInfo"
 import DetailShopInfo from "./childComp/DetailShopInfo"
 import DetailGoodsInfo from "./childComp/DetailGoodsInfo"
 import DetailParamInfo from "./childComp/DetailParamInfo"
+import DetailCommentInfo from "./childComp/DetailCommentInfo"
 
 import Scroll from "components/common/scroll/Scroll"
+import GoodsList from "components/content/goods/GoodsList"
 
-import { getDetail, Goods, Shop, GoodsParam } from "network/detail.js"
+import {
+  getDetail,
+  Goods,
+  Shop,
+  GoodsParam,
+  getRecommend
+} from "network/detail.js"
+import { debounce } from "common/util.js"
+import { itemListenerMixin } from "common/mixin.js"
 
 export default {
   name: "Detail",
@@ -29,10 +41,13 @@ export default {
     DetailSwiper,
     DetailBaseInfo,
     DetailShopInfo,
-    Scroll,
     DetailGoodsInfo,
-    DetailParamInfo
+    DetailParamInfo,
+    DetailCommentInfo,
+    Scroll,
+    GoodsList
   },
+  mixins: [itemListenerMixin],
   data() {
     return {
       iid: null,
@@ -40,11 +55,13 @@ export default {
       goods: {},
       shop: {},
       detailInfo: {},
-      paramInfo: {}
+      paramInfo: {},
+      commentInfo: {},
+      recommends: []
     }
   },
   created() {
-    // 保存传入的iid
+    // 1.保存传入的iid
     this.iid = this.$route.params.iid
 
     // 2.根据iid请求详情数据
@@ -72,12 +89,29 @@ export default {
         data.itemParams.info,
         data.itemParams.rule
       )
+
+      // 6.取出评论的信息
+      if (data.rate.cRate !== 0) {
+        this.commentInfo = data.rate.list[0]
+      }
+    })
+
+    // 3.请求推荐的数据
+    getRecommend().then(res => {
+      // console.log(res)
+      this.recommends = res.data.list
     })
   },
   methods: {
     imageLoad() {
       this.$refs.scroll.refresh()
     }
+  },
+  mounted() {
+    // 内容在混入中
+  },
+  destroyed() {
+    this.$bus.$off("itemImageLoad", this.itemImgListener)
   }
 }
 </script>

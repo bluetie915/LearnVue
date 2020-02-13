@@ -54,3 +54,59 @@
 - 创建混入对象：const mixin = {}
 - 组件对象中：mixins: [mixin]
 
+#### 十三、处理两个bug
+
+- 首页tabControl
+- 详情滚动的bug
+
+#### 十四、标题和内容的联动效果
+
+##### 14.1 点击标题滚动到对应的主题
+
+- 在detail中监听标题的点击，获取index
+- 滚动到对应的主题：
+  - 获取所有主题的offsetTop
+  - 问题：在哪里才能获取到正确的offsetTop
+    - created肯定不行，压根不能获取元素
+    - mounted也不行，数据还没有获取到
+    - 获取数据的回调中也不行，DOM还没有渲染完
+    - $nextTick也不行，因为图片的高度没有被计算在内
+    - 在图片加载完成之后，获取的高度才是正确的
+
+##### 14.2 内容滚动，显示正确的标题
+
+###### 普通做法
+
+```js
+(
+    this.currentIndex !== i &&
+		((i < length - 1 &&
+		positionY >= this.themeTopYs[i] &&
+		positionY < this.themeTopYs[i + 1]) ||
+	(i === length - 1 && positionY >=       
+     	this.themeTopYs[i]))
+)
+条件成立：this.currentIndex = i
+条件一：防止赋值的过程过于频繁
+条件二：(i < length - 1 &&
+		  positionY >= this.themeTopYs[i] &&
+		  positionY < this.themeTopYs[i + 1]) ||
+	   (i === length - 1 && positionY >=       
+     	  this.themeTopYs[i])
+	条件1：i < length - 1 &&
+		  positionY >= this.themeTopYs[i] &&
+		  positionY < this.themeTopYs[i + 1]
+		判断区间：在0和某个数字之间(i === length - 1)
+	条件2：i === length - 1 && positionY >=       
+     	   this.themeTopYs[i]
+		判断大于等于：i === length - 1
+```
+
+###### hack做法
+
+```js
+this.currentIndex !== i &&
+          positionY >= this.themeTopYs[i] &&
+          positionY < this.themeTopYs[i + 1]
+```
+

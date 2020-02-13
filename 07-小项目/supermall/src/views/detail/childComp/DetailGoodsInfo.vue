@@ -38,9 +38,9 @@ export default {
       // if (this.counter === this.imageLength) {
       //   this.$emit("iamgeLoad")
       // }
-      // if (++this.counter === this.imageLength) {
+      if (++this.counter === this.imageLength) {
         this.$emit("imageLoad")
-      // }
+      }
     }
   },
   watch: {

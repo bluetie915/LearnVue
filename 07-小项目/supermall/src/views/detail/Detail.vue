@@ -15,6 +15,8 @@
       <detail-comment-info :comment-info="commentInfo" ref="comment" />
       <goods-list :goods="recommends" ref="recommend" />
     </scroll>
+    <detail-bottom-bar />
+    <back-top @click.native="backClick" v-show="isShowBackTop" />
   </div>
 </template>
 <script>
@@ -25,6 +27,7 @@ import DetailShopInfo from "./childComp/DetailShopInfo"
 import DetailGoodsInfo from "./childComp/DetailGoodsInfo"
 import DetailParamInfo from "./childComp/DetailParamInfo"
 import DetailCommentInfo from "./childComp/DetailCommentInfo"
+import DetailBottomBar from "./childComp/DetailBottomBar"
 
 import Scroll from "components/common/scroll/Scroll"
 import GoodsList from "components/content/goods/GoodsList"
@@ -37,7 +40,7 @@ import {
   getRecommend
 } from "network/detail.js"
 import { debounce } from "common/util.js"
-import { itemListenerMixin } from "common/mixin.js"
+import { itemListenerMixin, backTopMixin } from "common/mixin.js"
 
 export default {
   name: "Detail",
@@ -50,9 +53,10 @@ export default {
     DetailParamInfo,
     DetailCommentInfo,
     Scroll,
-    GoodsList
+    GoodsList,
+    DetailBottomBar
   },
-  mixins: [itemListenerMixin],
+  mixins: [itemListenerMixin, backTopMixin],
   data() {
     return {
       iid: null,
@@ -182,6 +186,9 @@ export default {
         //   this.currentIndex = i
         //   this.$refs.nav.currentIndex = this.currentIndex
         // }
+
+        // 3.是否显示回到顶部
+        this.listenShowBackTop(position)
       }
     }
   },
@@ -206,6 +213,6 @@ export default {
   background-color: #fff;
 }
 .content {
-  height: calc(100% - 44px);
+  height: calc(100% - 44px - 49px);
 }
 </style>

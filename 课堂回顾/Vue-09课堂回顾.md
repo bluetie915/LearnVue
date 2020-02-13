@@ -106,7 +106,7 @@
 
 ```js
 this.currentIndex !== i &&
-          positionY >= this.themeTopYs[i] &&
-          positionY < this.themeTopYs[i + 1]
+	positionY >= this.themeTopYs[i] &&
+	positionY < this.themeTopYs[i + 1]
 ```
 

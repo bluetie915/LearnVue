@@ -110,3 +110,9 @@ this.currentIndex !== i &&
 	positionY < this.themeTopYs[i + 1]
 ```
 
+#### 十五、顶部工具栏的封装
+
+#### 十六、详情页的回到顶部
+
+- home.vue和detail.vue回到顶部：mixin
+

@@ -7,9 +7,6 @@
       :probe-type="3"
       @scroll="contentScroll"
     >
-      <div>
-        {{ $store.state.carList }}
-      </div>
       <detail-swiper :top-images="topImages" />
       <detail-base-info :goods="goods" />
       <detail-shop-info :shop="shop" />
@@ -204,7 +201,7 @@ export default {
       product.iid = this.iid
 
       // 2.将商品添加到购物车里面
-      this.$store.commit("addCart", product)
+      this.$store.dispatch("addCart", product)
     }
   },
   mounted() {

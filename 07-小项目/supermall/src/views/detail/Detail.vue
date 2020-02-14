@@ -7,6 +7,9 @@
       :probe-type="3"
       @scroll="contentScroll"
     >
+      <div>
+        {{ $store.state.carList }}
+      </div>
       <detail-swiper :top-images="topImages" />
       <detail-base-info :goods="goods" />
       <detail-shop-info :shop="shop" />
@@ -15,7 +18,7 @@
       <detail-comment-info :comment-info="commentInfo" ref="comment" />
       <goods-list :goods="recommends" ref="recommend" />
     </scroll>
-    <detail-bottom-bar />
+    <detail-bottom-bar @addToCar="addToCar" />
     <back-top @click.native="backClick" v-show="isShowBackTop" />
   </div>
 </template>
@@ -190,6 +193,18 @@ export default {
         // 3.是否显示回到顶部
         this.listenShowBackTop(position)
       }
+    },
+    addToCar() {
+      // 1.获取购物车需要展示的信息
+      const product = {}
+      product.image = this.topImages[0]
+      product.title = this.goods.title
+      product.desc = this.goods.desc
+      product.price = this.goods.realPrice
+      product.iid = this.iid
+
+      // 2.将商品添加到购物车里面
+      this.$store.commit("addCart", product)
     }
   },
   mounted() {

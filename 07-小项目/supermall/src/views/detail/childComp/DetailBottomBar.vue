@@ -15,14 +15,20 @@
       </div>
     </div>
     <div class="bar-item bar-right">
-      <div class="cart">加入购物车</div>
+      <div class="cart" @click="addToCar">加入购物车</div>
       <div class="buy">购买</div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "DetailBottomBar"
+  name: "DetailBottomBar",
+  methods: {
+    addToCar() {
+      // console.log("点击添加到购物车中")
+      this.$emit("addToCar")
+    }
+  }
 }
 </script>
 <style scoped>
@@ -69,7 +75,7 @@ export default {
 .bar-right {
   font-size: 15px;
   color: #fff;
-  line-height: 58px;
+  line-height: 49px;
 }
 
 .bar-right .cart {

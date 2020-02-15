@@ -116,3 +116,53 @@ this.currentIndex !== i &&
 
 - home.vue和detail.vue回到顶部：mixin
 
+#### 十七、点击加入购物车
+
+##### 17.1 监听加入购物车点击，并且获取商品信息
+
+- 监听
+- 获取商品信息：iid/price/image/title/desc
+
+##### 17.2 将商品添加到Vuex中
+
+- 安装Vuex
+- 配置Vuex
+- 定义mutations，将商品添加到state.cartList
+- 重构代码：
+  - 将mutations中的代码抽取到actions(定义两个mutations)
+  - 将mutations/actions单独文件中
+
+#### 十八、购物车的展示
+
+##### 18.1 购物车的导航栏的展示
+
+##### 18.2 购物车商品的展示
+
+- CartList => Scroll(滚动问题)
+- CartListItem => CheckButton
+
+##### 18.3 商品的选中和不选中状态
+
+- 修改模型对象，改变选中和不选中
+
+##### 18.4 底部工具栏的汇总
+
+- 全选按钮
+- 计算总价格
+- 去计算
+
+#### 十九、购物车的全选按钮
+
+- 显示状态
+  - 判断是否有一个不选中，全选就是不选中状态
+- 点击全选按钮
+  - 如果原来都是选中的，点击一次，则全部不选中
+  - 如果原来都是不选中(某些不选中)，则全部选中
+
+#### 二十、添加购物车弹窗
+
+##### 20.1 Vuex的补充
+
+- Actions可以返回一个Promise
+- mapActions的映射关系
+

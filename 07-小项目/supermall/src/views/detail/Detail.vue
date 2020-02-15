@@ -42,6 +42,8 @@ import {
 import { debounce } from "common/util.js"
 import { itemListenerMixin, backTopMixin } from "common/mixin.js"
 
+import { mapActions } from "vuex"
+
 export default {
   name: "Detail",
   components: {
@@ -148,6 +150,7 @@ export default {
     }, 1)
   },
   methods: {
+    ...mapActions(["addCart"]),
     imageLoad() {
       this.$refs.scroll.refresh()
       // console.log("----")
@@ -201,7 +204,13 @@ export default {
       product.iid = this.iid
 
       // 2.将商品添加到购物车里面
-      this.$store.dispatch("addCart", product)
+      // 补充两个知识点 分别是Promise和mapActions
+      // this.$store.dispatch("addCart", product).then(res => {
+      //   console.log(res)
+      // })
+      this.addCart(product).then(res => {
+        console.log(res)
+      })
     }
   },
   mounted() {

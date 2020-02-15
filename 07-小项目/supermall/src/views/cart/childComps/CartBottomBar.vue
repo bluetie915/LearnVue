@@ -1,7 +1,11 @@
 <template>
   <div class="bottom-bar">
     <div class="check-content">
-      <check-button class="check-button"></check-button>
+      <check-button
+        class="check-button"
+        :is-checked="isSelectAll"
+        @click.native="checkClick"
+      ></check-button>
       <span>全选</span>
     </div>
     <div class="price">合计：{{ totalPrice }}</div>
@@ -33,6 +37,34 @@ export default {
     },
     checkLength() {
       return this.cartList.filter(item => item.checked).length
+    },
+    isSelectAll() {
+      if (this.cartList.length === 0) return false
+      // 1.使用filter
+      // return !(this.cartList.filter(item => !item.checked).length)
+
+      // 2.使用find
+      // return !this.cartList.find(item => !item.checked)
+
+      // 3.普通遍历
+      for (let item of this.cartList) {
+        if (!item.checked) {
+          return false
+        }
+      }
+      return true
+    }
+  },
+  methods: {
+    checkClick() {
+      // console.log("点击成功")
+      if (this.isSelectAll) {
+        // 全部选中
+        this.cartList.forEach(item => (item.checked = false))
+      } else {
+        this.cartList.forEach(item => (item.checked = true))
+      }
+      // this.cartList.forEach(item => (item.checked = !this.isSelectAll))
     }
   }
 }
@@ -61,7 +93,7 @@ export default {
   margin-left: 20px;
   flex: 1;
 }
-.calculate{
+.calculate {
   width: 90px;
   background-color: #f40;
   color: white;

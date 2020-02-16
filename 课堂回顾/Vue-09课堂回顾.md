@@ -166,3 +166,33 @@ this.currentIndex !== i &&
 - Actions可以返回一个Promise
 - mapActions的映射关系
 
+##### 20.2 Toast(吐司)封装
+
+- 普通封装方式
+- 插件封装方式
+
+#### 二十一、补充一些细节
+
+##### 21.1 fastClick减少点击延迟
+
+- 安装fastclick
+- 导入
+- 调用attach()函数
+
+##### 22.2 图片的懒加载
+
+- 什么是图片懒加载？
+  - 图片需要显示在屏幕上时，再加载数据
+- 使用vue-lazyload
+  - 安装
+  - 导入
+  - Vue.use
+  - 修改img :scr  =>  v-lazy
+
+##### 22.3 px2vw插件使用
+
+- 安装插件
+- 在postcss.config.js配置插件
+
+
+

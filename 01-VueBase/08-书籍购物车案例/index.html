@@ -25,7 +25,7 @@
               <td>{{book.id}}</td>
               <td>{{book.name}}</td>
               <td>{{book.createDate}}</td>
-              <td>{{book.price | showPrice}}</td>
+              <td>{{book.price }}</td>
               <td>
                 <button @click="decrement(index)" :disabled="book.amount===1">
                   -</button
@@ -35,7 +35,7 @@
             </tr>
           </tbody>
         </table>
-        <h2>总价格：{{totalPrice | showPrice}}</h2>
+        <!-- <h2>总价格：{{totalPrice | showPrice}}</h2> -->
       </div>
       <div v-else>
         <h2>购物车为空</h2>

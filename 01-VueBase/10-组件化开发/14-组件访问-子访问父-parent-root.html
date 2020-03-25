@@ -47,10 +47,10 @@
                 methods: {
                   btnClick() {
                     // 1.访问父组件$parent
-                    // 一般不会用，因为组件就是用来复用的，但是组件去找父组件中的东西不一定总是级找到
+                    // 一般不会用，因为组件就是用来复用的，但是组件去找父组件中的东西不一定总是能找到
                     // 也就是说父组件拥有的东西是不一样的，所以出现报错情况
-                    // console.log(this.$parent);
-                    // console.log(this.$parent.name);
+                    console.log(this.$parent);
+                    console.log(this.$parent.name);
 
                     // 2.访问根组件$root
                     console.log(this.$root)

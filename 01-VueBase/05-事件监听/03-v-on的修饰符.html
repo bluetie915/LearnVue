@@ -15,14 +15,14 @@
 
       <!-- 2.修饰符.prevent的使用 -->
       <form action="baidu">
-        <input type="submit" value="提交" @click.prevent="submitClick" />
+        <input type="submit" value="提交" @click="submitClick" />
       </form>
 
       <!-- 3.监听某个键盘的键帽的点击 -->
       <input type="text" @keyup.enter="keyUp" />
 
       <!-- 4.修饰符.once的使用 -->
-      <button @click.once="btn2Click">按钮2</button>
+      <button @click="btn2Click">按钮2</button>
     </div>
 
     <script src="../js/vue.js"></script>

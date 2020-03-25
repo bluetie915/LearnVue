@@ -9,7 +9,7 @@
     <div id="app">
       <h2>{{message}}</h2>
       <!-- v-onse修饰的变量在初次定义之后无法被修改 -->
-      <h2 v-once>{{message}}</h2>
+      <h3 v-once>{{message}}</h3>
     </div>
 
     <script src="../js/vue.js"></script>
@@ -20,6 +20,7 @@
           message: "你好"
         }
       })
+      app.message = "你今天真好看"
     </script>
   </body>
 </html>

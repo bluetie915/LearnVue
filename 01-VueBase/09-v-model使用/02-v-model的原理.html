@@ -12,7 +12,7 @@
       <input
         type="text"
         :value="message"
-        @input="message = $event.target.value"
+        @input="valueChange"
       />
       <h2>{{message}}</h2>
     </div>

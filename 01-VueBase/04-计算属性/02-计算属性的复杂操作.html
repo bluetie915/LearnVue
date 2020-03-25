@@ -26,16 +26,16 @@
           //filter/map/reduce
           totalPrice: function() {
             let result = 0
-            for (let i = 0; i < this.books.length; i++) {
-              result += this.books[i].price
-            }
-            return result
+            // for (let i = 0; i < this.books.length; i++) {
+            //   result += this.books[i].price
+            // }
             // for(let i in this.books){
             //     this.books[i]
             // }
-            // for(let book of this.books){
-
-            // }
+            for (let book of this.books) {
+              result += book.price
+            }
+            return result
           }
         }
       })
